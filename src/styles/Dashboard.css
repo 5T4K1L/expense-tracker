@@ -1,0 +1,176 @@
+/* DASHBOARD */
+
+.dashboard {
+  font-family: "Outfit", serif;
+  position: relative;
+}
+
+/* REPORTS */
+
+.monthlyIncome {
+  background-color: #baffe1;
+  height: 103px;
+  border-radius: 10px;
+  padding: 12px 30px;
+  margin-bottom: 25px;
+}
+
+.monthlyIncome p:first-child {
+  font-size: clamp(13px, 3vw, 30rem);
+}
+
+.monthlyIncome p:last-child {
+  font-size: clamp(30px, 5vw, 30rem);
+  margin-top: 15px;
+  font-weight: bold;
+  color: #424242;
+}
+
+.totalExpenses {
+  background-color: #f5ffba;
+  height: 103px;
+  border-radius: 10px;
+  padding: 12px 30px;
+  margin-bottom: 25px;
+}
+
+.totalExpenses p:first-child {
+  font-size: clamp(13px, 3vw, 30rem);
+}
+
+.totalExpenses p:last-child {
+  font-size: clamp(30px, 5vw, 30rem);
+  margin-top: 15px;
+  font-weight: bold;
+  color: #424242;
+}
+
+.currBalance {
+  background-color: #baf2ff;
+  height: 103px;
+  border-radius: 10px;
+  padding: 12px 30px;
+  margin-bottom: 25px;
+}
+
+.currBalance p:first-child {
+  font-size: clamp(13px, 3vw, 30rem);
+}
+
+.currBalance p:last-child {
+  font-size: clamp(30px, 5vw, 30rem);
+  margin-top: 15px;
+  font-weight: bold;
+  color: #424242;
+}
+
+/* MONTHLY PAYMENTS */
+
+.monthlyPayments {
+  background-color: white;
+  border-radius: 10px;
+  padding: 13px 30px;
+  margin-bottom: 25px;
+}
+
+.monthlyPayments p {
+  margin-bottom: 10px;
+}
+
+table {
+  font-size: clamp(12px, 3vw, 30rem);
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  padding: 8px;
+}
+
+th:first-child,
+td:first-child {
+  border-left: none;
+}
+
+th:last-child,
+td:last-child {
+  border-right: none;
+}
+
+.total {
+  color: red;
+}
+
+/* HISTORY */
+
+.history {
+  background-color: white;
+  border-radius: 10px;
+  padding: 13px 30px;
+}
+
+.history p {
+  margin-bottom: 10px;
+}
+
+table {
+  font-size: clamp(12px, 3vw, 30rem);
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  padding: 8px;
+}
+
+th:first-child,
+td:first-child {
+  border-left: none;
+}
+
+th:last-child,
+td:last-child {
+  border-right: none;
+}
+
+/* TRIPS */
+
+.trips {
+  margin-top: 25px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 13px 30px;
+}
+
+.trips p {
+  margin-bottom: 10px;
+}
+
+table {
+  font-size: clamp(12px, 3vw, 30rem);
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  padding: 8px;
+}
+
+th:first-child,
+td:first-child {
+  border-left: none;
+}
+
+th:last-child,
+td:last-child {
+  border-right: none;
+}

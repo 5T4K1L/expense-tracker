@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Outfit", serif;
+}
+
+body {
+  background-color: #272647;
+  font-family: "Outfit", serif;
+  margin: 30px;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+  font-family: "Outfit", serif;
+  position: absolute;
+  left: -100%;
+  z-index: 1;
+  top: 0;
+  background-color: #514ea8;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: left 0.5s ease-out;
+}
+
+.sidebar.active {
+  left: 0%; /* Target position */
+}
+
+.sidebar .logo {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  color: white;
+  font-size: 15px;
+  font-weight: lighter;
+  margin: 0;
+  padding: 31px 33px;
+}
+
+.sidebar .links {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar .links a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  font-size: 12px;
+  width: 178px;
+  height: 38px;
+  border-radius: 20px;
+  margin-bottom: 31px;
+}
+
+.sidebar .links a:first-child {
+  background-color: #272647;
+}
+
+.sidebar .links a:not(:first-child) {
+  background-color: #6361b5;
+}
+
+.sidebar img {
+  height: 82px;
+}
+
+/* NAVBAR */
+
+.navbar {
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 30px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+
+  margin-bottom: 25px;
+}
+
+.hamburger-menu {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger-menu span {
+  display: block;
+  margin: 7px;
+  width: 35px;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+}
+
+/* CIRCLES */
+
+.circleOne {
+  background-color: #7571ff;
+  height: 342px;
+  width: 342px;
+  border-radius: 50%;
+  position: absolute;
+  z-index: -1;
+  filter: blur(120px);
+  top: -30%;
+  right: -9%;
+}
+.circleTwo {
+  background-color: #baf2ff;
+  height: 342px;
+  width: 342px;
+  border-radius: 50%;
+  position: absolute;
+  z-index: -1;
+  filter: blur(120px);
+  left: -25%;
+  bottom: -5%;
+}

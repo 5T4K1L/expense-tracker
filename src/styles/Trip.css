@@ -1,0 +1,30 @@
+/* FORM */
+.tripContainer form input {
+  border: none;
+  text-align: left;
+  padding: 2rem 2rem;
+  outline: none;
+  font-size: clamp(13px, 3vw, 30rem);
+}
+
+.tripContainer form input,
+form button {
+  margin-bottom: 39px;
+  height: 55px;
+  width: 100%;
+  border-radius: 20px;
+  font-size: clamp(13px, 3vw, 30rem);
+}
+
+.tripContainer form button {
+  background-color: #adffd6;
+  border: none;
+}
+
+.tripContainer td button {
+  background-color: rgb(241, 89, 89);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
