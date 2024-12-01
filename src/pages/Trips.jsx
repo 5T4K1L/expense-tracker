@@ -10,9 +10,9 @@ import {
   getDocs,
   query,
   where,
-} from "firebase/firestore"; // Only one import statement here
+} from "firebase/firestore";
 import { auth, db } from "../firebase";
-import { onAuthStateChanged } from "firebase/auth"; // Only this is necessary
+import { useParams } from "react-router-dom";
 
 const Trips = () => {
   const [place, setPlace] = useState("");
@@ -20,6 +20,7 @@ const Trips = () => {
   const [trip, setTrip] = useState([]);
   const [total, setTotal] = useState();
   const [user, setUser] = useState(null);
+  const { code } = useParams();
 
   const tripCollection = collection(db, "trip");
 
@@ -36,6 +37,7 @@ const Trips = () => {
       place,
       amount,
       uid: user.uid,
+      code,
     });
 
     setPlace("");

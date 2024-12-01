@@ -1,21 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/Global.css";
 import "../styles/LoginRegister.css";
 import { auth, db } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { addDoc, collection } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { generateUniqueCodes } from "../codeGenerator";
 
 const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [error, setError] = useState("");
-
+  const [codes, setCodes] = useState("");
   const nav = useNavigate();
 
   const usersCollection = collection(db, "users");
   const monthlyIncome = collection(db, "income");
+
+  const handleGenerateCodes = () => {
+    const randomCodes = generateUniqueCodes(1);
+    setCodes(randomCodes[0]);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,14 +30,13 @@ const Register = () => {
       addDoc(usersCollection, {
         username,
         uid: res.user.uid,
-        code:
-          username.split(" ")[0] +
-          email.split("@gmail.com" || "@yahoo.com" || "@icloud.com"),
+        code: codes,
       });
 
       addDoc(monthlyIncome, {
         uid: res.user.uid,
         income: "0",
+        code: codes,
       });
 
       nav("/");
@@ -39,6 +44,10 @@ const Register = () => {
       setError("Email already in use.");
     }
   };
+
+  useEffect(() => {
+    handleGenerateCodes();
+  }, []);
 
   return (
     <>

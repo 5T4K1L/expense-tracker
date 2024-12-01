@@ -11,7 +11,7 @@ import {
   where,
 } from "firebase/firestore";
 import { auth, db } from "../firebase";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 const Income = () => {
   const [income, setIncome] = useState();

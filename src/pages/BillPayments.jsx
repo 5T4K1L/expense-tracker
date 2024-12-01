@@ -14,7 +14,7 @@ import {
 import { db } from "../firebase";
 import Navbar from "../components/Navbar";
 import { AuthContext } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const BillPayments = () => {
   const { currentUser } = useContext(AuthContext);
@@ -22,6 +22,7 @@ const BillPayments = () => {
   const [amount, setAmount] = useState("");
   const [total, setTotal] = useState(0);
   const [monthly, setMonthly] = useState([]);
+  const { code } = useParams();
   const nav = useNavigate();
 
   const monthlyExpense = collection(db, "monthlyExpense");
@@ -54,6 +55,7 @@ const BillPayments = () => {
         name,
         amount,
         uid: currentUser.uid,
+        code,
       });
       setName("");
       setAmount("");
@@ -67,6 +69,10 @@ const BillPayments = () => {
     await deleteDoc(doc(db, "monthlyExpense", monthlyId));
     getMonthly();
   };
+
+  useEffect(() => {
+    getMonthly();
+  }, []);
 
   return (
     <>

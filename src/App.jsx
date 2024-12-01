@@ -7,11 +7,13 @@ import Expenses from "./pages/Expenses";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { useEffect, useState } from "react";
-import { auth } from "./firebase";
-import { onAuthStateChanged } from "firebase/auth";
+import { auth, db } from "./firebase";
+import { collection, getDocs, query, where } from "firebase/firestore";
 
 function App() {
   const [user, setUser] = useState(null);
+
+  const userCollection = collection(db, "users");
 
   useEffect(() => {
     const unsub = auth.onAuthStateChanged((user) => {
@@ -19,16 +21,20 @@ function App() {
     });
     return () => unsub();
   });
+
   return (
     <BrowserRouter>
       <Routes>
         {user ? (
           <>
             <Route index element={<Dashboard />} />
-            <Route path="/bills-and-payments" element={<BillPayments />} />
-            <Route path="/income" element={<Income />} />
-            <Route path="/trips" element={<Trips />} />
-            <Route path="/expenses" element={<Expenses />} />
+            <Route
+              path={`/bills-and-payments/:code`}
+              element={<BillPayments />}
+            />
+            <Route path={`/income/:code`} element={<Income />} />
+            <Route path={`/trips/:code`} element={<Trips />} />
+            <Route path={`/expenses/:code`} element={<Expenses />} />
           </>
         ) : (
           <>

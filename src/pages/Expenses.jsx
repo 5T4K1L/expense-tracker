@@ -13,6 +13,7 @@ import {
 } from "firebase/firestore";
 
 import { auth, db } from "../firebase";
+import { useParams } from "react-router-dom";
 
 const Expenses = () => {
   const [name, setName] = useState("");
@@ -21,6 +22,7 @@ const Expenses = () => {
   const [expenses, setExpenses] = useState([]);
   const [total, setTotal] = useState(0);
   const [user, setUser] = useState(null);
+  const { code } = useParams();
 
   const expense = collection(db, "expense");
 
@@ -39,6 +41,7 @@ const Expenses = () => {
         date,
         amount,
         uid: user.uid,
+        code,
       });
       loadExpense();
     }
