@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import "../styles/Global.css";
+import "../styles/Navbar.css";
 import expense from "../icons/expenselogo.png";
 import { auth, db } from "../firebase";
 import { useNavigate } from "react-router-dom";
@@ -9,8 +10,13 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 const Navbar = () => {
   const [user, setUser] = useState(null);
   const [code, setCode] = useState([]);
+  const [trackCode, setTrackCode] = useState();
+  const [error, setError] = useState("");
   const [showHam, setShowHam] = useState(false);
+  const [personalCode, setPersonalCode] = useState([]);
   const nav = useNavigate();
+
+  const userCollection = collection(db, "users");
 
   useEffect(() => {
     const unsub = auth.onAuthStateChanged((user) => {
@@ -18,8 +24,6 @@ const Navbar = () => {
     });
     return () => unsub();
   });
-
-  const userCollection = collection(db, "users");
 
   const showHamburger = () => {
     setShowHam((prev) => !prev);
@@ -47,21 +51,38 @@ const Navbar = () => {
     }
   };
 
-  // const handleTrack = async () => {
-  //   const q = query(collection(db, "expense"), where("code", "==", code.code));
-  //   const snapshot = await getDocs(q);
-  //   const newTrack = snapshot.docs.map((doc) => {
-  //     const data = doc.data();
-  //     data.id = doc.id;
-  //     return data;
-  //   });
+  const handleTrack = async () => {
+    const q = query(collection(db, "expense"), where("code", "==", trackCode));
+    const snapshot = await getDocs(q);
 
-  //   console.log(newTrack.map((track) => track.name));
-  // };
+    if (!snapshot.empty) {
+      const newTrack = snapshot.docs.map((doc) => {
+        const data = doc.data();
+        data.id = doc.id;
+        return data;
+      });
+
+      nav(`/${trackCode}`);
+    } else {
+      const error = "Code doesn't exists.";
+      setError(error);
+    }
+  };
+
+  const getPersonalCode = async () => {
+    const q = query(collection(db, "users"), where("uid", "==", user.uid));
+    const snapshot = await getDocs(q);
+    const personalCode = snapshot.docs.map((doc) => {
+      return { id: doc.id, ...doc.data() };
+    });
+
+    setPersonalCode(personalCode);
+  };
 
   useEffect(() => {
     if (user && user.uid) {
       getCode();
+      getPersonalCode();
     }
   }, [user]);
 
@@ -115,7 +136,37 @@ const Navbar = () => {
             </button>
           </a>
 
-          {/* <button onClick={handleTrack}>Check Tracking Code</button> */}
+          <div className="trackingcode">
+            <input
+              onChange={(e) => setTrackCode(e.target.value)}
+              type="text"
+              placeholder="Tracking Code"
+            />
+            <p
+              style={{
+                color: "lightgoldenrodyellow",
+                margin: "-5px",
+                fontSize: "10px",
+                textAlign: "center",
+              }}
+            >
+              {error}
+            </p>
+            <button onClick={handleTrack}>Check Tracking Code</button>
+          </div>
+
+          <p
+            style={{
+              color: "lightgoldenrodyellow",
+              marginTop: "20px",
+              fontSize: "13px",
+              textAlign: "center",
+            }}
+          >
+            Your Tracking Code:
+            <br />
+            {personalCode.map((code) => code.code)}
+          </p>
         </div>
       </div>
       <div className="navbar">

@@ -1,0 +1,86 @@
+/* SIDEBAR */
+
+.sidebar {
+  font-family: "Outfit", serif;
+  position: absolute;
+  left: -100%;
+  z-index: 1;
+  top: 0;
+  background-color: #514ea8;
+  padding-bottom: 4rem;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: left 0.5s ease-out;
+}
+
+.sidebar.active {
+  left: 0%; /* Target position */
+}
+
+.sidebar .logo {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  color: white;
+  font-size: 15px;
+  font-weight: lighter;
+  margin: 0;
+  padding: 31px 33px;
+}
+
+.sidebar .links {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar .links a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  font-size: 12px;
+  width: 178px;
+  height: 38px;
+  border-radius: 20px;
+  margin-bottom: 31px;
+}
+
+.sidebar .links a:first-child {
+  background-color: #272647;
+}
+
+.sidebar .links a:not(:first-child) {
+  background-color: #6361b5;
+}
+
+.sidebar img {
+  height: 82px;
+}
+
+/* TRACKING CODE */
+.trackingcode {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.trackingcode input {
+  border: none;
+  padding: 2px;
+  height: 2.5rem;
+  text-align: center;
+  border-radius: 1rem;
+  outline: none;
+}
+
+.trackingcode button {
+  background-color: #6361b5;
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  height: 3rem;
+}

@@ -9,6 +9,7 @@ import Register from "./pages/Register";
 import { useEffect, useState } from "react";
 import { auth, db } from "./firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
+import Visit from "./pages/Visit";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -35,6 +36,7 @@ function App() {
             <Route path={`/income/:code`} element={<Income />} />
             <Route path={`/trips/:code`} element={<Trips />} />
             <Route path={`/expenses/:code`} element={<Expenses />} />
+            <Route path={`/:trackerCode`} element={<Visit />} />
           </>
         ) : (
           <>

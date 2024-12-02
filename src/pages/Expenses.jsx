@@ -92,11 +92,7 @@ const Expenses = () => {
             type="text"
             placeholder="Name your Expense"
           />
-          <input
-            onChange={(e) => setDate(e.target.value)}
-            type="text"
-            placeholder="Date (MM/DD/YY)"
-          />
+          <input onChange={(e) => setDate(e.target.value)} type="date" />
           <input
             onChange={(e) => setAmount(e.target.value)}
             type="number"
